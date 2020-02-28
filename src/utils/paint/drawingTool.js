@@ -23,7 +23,6 @@ export const commandsCheck = (commands) => {
         return [{type:'Error',text:'First command must be canvas'}];
     }
     const [,...canvasParameters]=newStr[0].split(' ');
-    console.log(canvasParameters);
     let arr = [];
     let lastResult='';
     for (let command of newStr) {
@@ -36,10 +35,10 @@ export const commandsCheck = (commands) => {
             return {type:'Error',text:'Incorrect parameters in canvas'};
         }
     }
-
     return convertToString(arr);
 };
 const commandsCreator = (command, lastResult,canvasParameters) => {
+
     let [commandType, ...parameters] = command;
     let [x1, y1, x2, y2] = parameters;
     let error;
@@ -62,7 +61,7 @@ const commandsCreator = (command, lastResult,canvasParameters) => {
             }
             return {type:'Result',text:createRectangle(x1, y1, x2, y2, lastResult)};
         case BUCKET_FILL:
-            error=checkParametersLength(parameters,3)||checkBucketFill(parameters)||checkCanvasBorders(x1,y1,canvasParameters);
+            error=checkParametersLength(parameters,3)||checkBucketFill(parameters)||checkCanvasBorders(x1,y1,x2,y2,canvasParameters);
             if (error!==false) {
                 return error
             }

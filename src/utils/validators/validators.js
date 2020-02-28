@@ -1,6 +1,6 @@
 export const checkLine = (x1, y1, x2, y2) => {
     if(x1 !== x2 && y1 !== y2){
-        return {type:'Error',text:'Incorrect parameters'}
+        return {type:'Error',text:'Lines can be either horizontal or vertical'}
     }
     return false;
 };
