@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import InputFile from "./components/Input/InputFile";
+import OutputResult from "./components/Output/OutputResult";
+import FileSaver from 'file-saver';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    let [finalResult, setFinalResult] = useState(null);
+
+    const resultRender = (result) => {
+
+        let resultsElements = '';
+        for (let i = 0; i < result.length; i++) {
+            for (let k = 0; k < result[i].length; k++) {
+                resultsElements += result[i][k] + '\n';
+            }
+            resultsElements += '\n';
+        }
+        setFinalResult(resultsElements);
+    };
+    const saveFile = () => {
+        const blob = new Blob([finalResult], {type: 'text/plain;charset=utf-8'});
+        FileSaver.saveAs(blob, 'output.txt');
+    };
+
+    return (
+        <div className='app-wrapper'>
+            <InputFile resultRender={resultRender}/>
+            <OutputResult resultOnOutput={finalResult} saveFile={saveFile}/>
+        </div>
+
+    )
+};
 
 export default App;
