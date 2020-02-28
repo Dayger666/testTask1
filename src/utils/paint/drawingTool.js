@@ -2,7 +2,6 @@ import {createCanvas} from "../paint/createCanvas";
 import {createLine} from "../paint/createLine";
 import {createRectangle} from "../paint/createRectangle";
 import {createBucketFill} from "../paint/createBucketFill";
-
 import {convertToString} from "./supportTool/convertToString";
 import {
     checkBucketFill,
@@ -31,8 +30,8 @@ export const commandsCheck = (commands) => {
         if(arr[arr.length - 1].type === "Result"){
             lastResult=arr[arr.length-1].text;
         }
-        if (arr[0] === false) {
-            return convertToString({type:'Error',text:'Incorrect parameters in canvas'});
+        if (arr[0].type === 'Error') {
+            return convertToString([arr[0]]);
         }
     }
     return convertToString(arr);
