@@ -2,18 +2,18 @@ import {createBucketFill} from "../../../utils/paint/createBucketFill";
 
 describe('Create bucketFill in parameters', () => {
     test('If parameters are correct, bucketFill should be created ', () => {
-        const testCanvas=[
+        const testCanvas = [
             '-----------------',
             '|xxxxxxxxxx     |',
             '|xxxxxxxxxx     |',
             '-----------------',
         ];
-        const testBucketFill=[
+        const testBucketFill = [
             '-----------------',
             '|xxxxxxxxxxKKKKK|',
             '|xxxxxxxxxxKKKKK|',
             '-----------------',
         ];
-        expect(createBucketFill(11,1,'K',testCanvas),).toEqual(testBucketFill);
+        expect(createBucketFill(11, 1, 'K', testCanvas),).toEqual(testBucketFill);
     });
 });

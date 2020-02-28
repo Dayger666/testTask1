@@ -20,7 +20,7 @@ const BUCKET_FILL = 'B';
 export const commandsCheck = (commands) => {
     let newStr = commands.split('\n');
     if (newStr[0][0] !== CANVAS) {
-        return [{type:'Error',text:'First command must be canvas'}];
+        return convertToString([{type:'Error',text:'First command must be canvas'}]);
     }
     const [,...canvasParameters]=newStr[0].split(' ');
     let arr = [];
@@ -32,7 +32,7 @@ export const commandsCheck = (commands) => {
             lastResult=arr[arr.length-1].text;
         }
         if (arr[0] === false) {
-            return {type:'Error',text:'Incorrect parameters in canvas'};
+            return convertToString({type:'Error',text:'Incorrect parameters in canvas'});
         }
     }
     return convertToString(arr);

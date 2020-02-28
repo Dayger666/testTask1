@@ -21,7 +21,6 @@ const App = () => {
             <InputFile resultRender={resultRender}/>
             <OutputResult resultOnOutput={finalResult} saveFile={saveFile}/>
         </div>
-
     )
 };
 
