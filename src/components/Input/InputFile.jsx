@@ -4,7 +4,6 @@ import {commandsCheck} from "../../utils/paint/drawingTool";
 
 
 const InputFile = (props) => {
-
     let [file, fileChange] = useState(null);
     let [fileName, fileNameChange] = useState(null);
 
